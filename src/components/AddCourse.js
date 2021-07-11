@@ -4,6 +4,7 @@ import base_url from '../api/bootAPI';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router';
+import { useHistory } from 'react-router';
 
 const AddCourse = () => {
     const [state, setState] = useState({
@@ -12,6 +13,12 @@ const AddCourse = () => {
         description: ''
     });
     const { id } = useParams();
+
+    const history = useHistory();
+
+    useEffect(() => {
+        document.title = "Add Course";
+    }, []);
 
     useEffect(() => {
         if (id) {
@@ -31,6 +38,7 @@ const AddCourse = () => {
                 });
         }
     }, [id]);
+
 
     const changeForm = (e) => {
         const newState = JSON.parse(JSON.stringify(state));
@@ -70,14 +78,13 @@ const AddCourse = () => {
                     toast.error("Something Went Wrong!!!");
                 });
         }
-
     }
-    return (<>
+    return (<div className="row text-center justify-content-center ">
         <h4>Add Course</h4>
-        <Form onSubmit={handleForm}>
+        <Form onSubmit={handleForm} className='col-md-6'>
             <FormGroup>
                 <Label for="id">Course Id</Label>
-                <Input type="text" name="id" id="id" placeholder="Enter Here" value={state.id} onChange={changeForm} />
+                <Input type="text" name="id" id="id" placeholder="Enter Here" value={state.id} onChange={changeForm} disabled={id ? true : false} />
             </FormGroup>
             <FormGroup>
                 <Label for="title">Course Title</Label>
@@ -92,6 +99,6 @@ const AddCourse = () => {
                 <Button color="warning ml-3" type="reset" >Clear</Button>
             </Container>
         </Form>
-    </>);
+    </div>);
 }
 export default AddCourse;

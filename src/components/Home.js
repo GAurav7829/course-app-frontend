@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Jumbotron } from 'reactstrap';
 
 const Home = () => {
+    useEffect(() => {
+        document.title = "Home";
+    }, []);
     return (<>
         <Jumbotron>
             <h1 className="display-3">Courses</h1>

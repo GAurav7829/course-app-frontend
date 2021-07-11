@@ -15,12 +15,12 @@ const ViewCourses = () => {
         axios.get(`${base_url}/courses`).then((response) => {
             //for success
             //console.log(response.data);
-            toast.success("courses has been loaded!", { position: "bottom-right" });
+            toast.success("courses has been loaded!");
             setCourses(response.data);
         }, (error) => {
             //for error
             console.log(error);
-            toast.error("Something went wrong!", { position: "bottom-right" });
+            toast.error("Something went wrong!");
         });
     }
     //calling loading function
@@ -34,12 +34,14 @@ const ViewCourses = () => {
     }
 
     return (
-        <div>
-            <h1>All Courses</h1>
-            <p>List of Courses are as follow:</p>
-            {
-                courses.length > 0 ? courses.map((item) => <ViewCourse key={item.id} course={item} updateCourses={updateCourses} />) : "No Courses"
-            }
+        <div className='row justify-content-center'>
+            <div className='col-md-6'>
+                <h1>All Courses</h1>
+                <p>List of Courses are as follow:</p>
+                {
+                    courses.length > 0 ? courses.map((item) => <ViewCourse key={item.id} course={item} updateCourses={updateCourses} />) : "No Courses"
+                }
+            </div>
         </div>
     );
 }
