@@ -16,7 +16,7 @@ const Menubar = (props) => {
     return (
         <div>
             <Navbar color="light" light expand="md">
-                <Link className="navbar-brand" tag="a" to="/">reactstrap</Link>
+                <Link className="navbar-brand" tag="a" to="/">Course App</Link>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
