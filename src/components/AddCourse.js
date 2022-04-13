@@ -4,7 +4,6 @@ import base_url from '../api/bootAPI';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router';
-import { useHistory } from 'react-router';
 
 const AddCourse = () => {
     const [state, setState] = useState({
@@ -13,8 +12,6 @@ const AddCourse = () => {
         description: ''
     });
     const { id } = useParams();
-
-    const history = useHistory();
 
     useEffect(() => {
         document.title = "Add Course";
@@ -27,7 +24,7 @@ const AddCourse = () => {
                     console.log(response.data);
                     toast.success("Course fetched Successfully");
                     setState({
-                        id: response.data.id,
+                        //id: response.data.id,
                         title: response.data.title,
                         description: response.data.description
                     })
@@ -82,10 +79,10 @@ const AddCourse = () => {
     return (<div className="row text-center justify-content-center ">
         <h4>Add Course</h4>
         <Form onSubmit={handleForm} className='col-md-6'>
-            <FormGroup>
+            {/* <FormGroup>
                 <Label for="id">Course Id</Label>
                 <Input type="text" name="id" id="id" placeholder="Enter Here" value={state.id} onChange={changeForm} disabled={id ? true : false} />
-            </FormGroup>
+            </FormGroup> */}
             <FormGroup>
                 <Label for="title">Course Title</Label>
                 <Input type="text" name="title" id="title" placeholder="Enter Here" value={state.title} onChange={changeForm} />
